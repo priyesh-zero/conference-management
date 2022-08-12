@@ -1,1 +1,3 @@
-README FILE
+# Conference Management
+
+> Priyesh Shrivastava
