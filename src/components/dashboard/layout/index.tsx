@@ -8,7 +8,7 @@ const DashboardLayout = () => {
     const navigator = useNavigate();
 
     if (!user) {
-        return <Navigate to="/home" replace />;
+        return <Navigate to="/login" replace />;
     }
 
     return (
@@ -33,10 +33,13 @@ const DashboardLayout = () => {
                     },
                     {
                         id: "02",
-                        name: user.isStaff ? "Still Creating" : "Buy Passes",
+                        name: user.isStaff ? "Add Event" : "Buy Passes",
                         href: "",
                         icon: "dataviz-flip-counter",
-                        onClick: () => navigator("buy-passes"),
+                        onClick: () =>
+                            navigator(
+                                user.isStaff ? "add-event" : "buy-passes"
+                            ),
                     },
                 ]}
                 operator={{
@@ -44,9 +47,16 @@ const DashboardLayout = () => {
                     avatar: <Avatar shape="circle" size="m" name={user.name} />,
                     actions: [
                         {
-                            primary: "Profile ID",
+                            primary: user.isStaff
+                                ? "Scan Profile Id"
+                                : "Profile ID",
                             id: "profile-id",
-                            href: "profile-id",
+                            onClick: () =>
+                                navigator(
+                                    user.isStaff
+                                        ? "scan-profile-id"
+                                        : "profile-id"
+                                ),
                         },
                         {
                             primary: "Log out",

@@ -7,6 +7,7 @@ import {
 } from "@pega/cosmos-react-core";
 import { useAtom } from "jotai";
 import { useMemo, useState } from "react";
+import { persistedEvents } from "../../../../atom/events";
 import { userAtom } from "../../../../atom/user";
 import { EVENTS } from "../../../../constants/events";
 
@@ -23,6 +24,7 @@ const formatPrice = (value: number) => {
 
 const BuyPass = () => {
     const [user] = useAtom(userAtom);
+    const [allEvents] = useAtom(persistedEvents);
 
     const [events, setEvents] = useState(new Set(user?.events || []));
 
@@ -45,19 +47,23 @@ const BuyPass = () => {
                 )}
             </div>
             <div className="schedule-container grid gap-8">
-                {Object.keys(EVENTS).map((day) => (
+                {Object.keys(allEvents).map((day) => (
                     <Card key={day}>
                         <CardHeader className="capitalize font-bold text-center">
                             {day.replaceAll("-", " ")}
                         </CardHeader>
                         <CardContent>
-                            {EVENTS[day as DayKeys].map((event) => (
+                            {allEvents[day as DayKeys].map((event) => (
                                 <div
                                     key={event.id}
                                     className="rounded-xl bg-gray-100 p-4 mb-2 flex gap-4"
                                 >
                                     <div>
                                         <Checkbox
+                                            disabled={
+                                                user!.events.indexOf(event.id) >
+                                                -1
+                                            }
                                             checked={events.has(event.id)}
                                             onChange={() => {
                                                 if (events.has(event.id)) {

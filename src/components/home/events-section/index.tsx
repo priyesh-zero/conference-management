@@ -1,4 +1,5 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Link } from "react-router-dom";
 import { EVENTS } from "../../../constants/events";
 
 import "./EventsSection.scss";
@@ -39,9 +40,11 @@ export const EventsSection = () => {
                         </div>
                     ))}
                 </div>
+                <Link to="/dashboard/buy-passes">
                 <button className="w-full bg-emerald-500 p-4 rounded text-gray-100">
                     Buy Passes
                 </button>
+                </Link>
             </article>
         </section>
     );
