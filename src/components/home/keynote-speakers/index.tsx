@@ -44,12 +44,12 @@ export const KeynoteSpeaker = () => {
     return (
         <section
             id="keynote-speakers"
-            className="w-full min-h-screen bg-teal-100 p-12"
+            className="w-full min-h-screen bg-teal-100 p-12 flex flex-col"
         >
             <h2 className="text-center text-7xl text-emerald-500 my-8">
                 Keynote Speakers
             </h2>
-            <div className="grid gap-20 items-center justify-center">
+            <div className="grid gap-20 items-center justify-center flex-1">
                 {SPEAKERS.map((speaker) => (
                     <SpeakerCard key={speaker.id} {...speaker} />
                 ))}

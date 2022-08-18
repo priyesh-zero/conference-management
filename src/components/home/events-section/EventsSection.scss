@@ -1,0 +1,8 @@
+#events-section {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+
+    .event-slot {
+        grid-template-columns: 180px 1fr;
+    }
+}
