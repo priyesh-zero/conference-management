@@ -9,6 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@pega/cosmos-react-core": "^3.0.0-dev.30.0",
+    "@pega/cosmos-react-rte": "^3.0.0-dev.30.0",
+    "@pega/cosmos-react-social": "^3.0.0-dev.30.0",
+    "@pega/cosmos-react-work": "^3.0.0-dev.30.0",
+    "jotai": "^1.7.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "6"
